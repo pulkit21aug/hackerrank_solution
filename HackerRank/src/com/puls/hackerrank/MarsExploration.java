@@ -29,7 +29,7 @@ public class MarsExploration {
 				cnt++;
 			}
 			
-			i=i+3;
+			i=i+2;
 		}
     	
     	return cnt;
