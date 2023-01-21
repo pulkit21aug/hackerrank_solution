@@ -14,33 +14,48 @@ import static java.util.stream.Collectors.toList;
 
 class SequenceEquationResult {
 
-    /*
-     * Complete the 'permutationEquation' function below.
-     *
-     * The function is expected to return an INTEGER_ARRAY.
-     * The function accepts INTEGER_ARRAY p as parameter.
-     */
+	/*
+	 * Complete the 'permutationEquation' function below.
+	 *
+	 * The function is expected to return an INTEGER_ARRAY. The function accepts
+	 * INTEGER_ARRAY p as parameter.
+	 */
 
-    public static List<Integer> permutationEquation(List<Integer> p) {
-    // Write your code here
+	public static List<Integer> permutationEquation(List<Integer> p) {
+		// Write your code here
+		// 1) size of array
+		int n = p.size();
 
-    }
+		// 2) find index of 1 to n in arraylist p
+		ArrayList<Integer> arr1 = new ArrayList<>();
+		for (int i = 1; i <= n; i++) {
+			arr1.add(p.indexOf(i) + 1);
+		}
+
+		// 3) find index of all elements in arralyist arr1
+
+		ArrayList<Integer> arr2 = new ArrayList<>();
+		for (int i = 0; i < n; i++) {
+			arr2.add(p.indexOf(arr1.get(i)) + 1);
+		}
+
+		return arr2;
+	}
 
 }
 
 public class SequenceEquation {
-    public static void main(String[] args) throws IOException {
-        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
+	public static void main(String[] args) throws IOException {
+		BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
 //        BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(System.getenv("OUTPUT_PATH")));
 
-        int n = Integer.parseInt(bufferedReader.readLine().trim());
+		int n = Integer.parseInt(bufferedReader.readLine().trim());
 
-        List<Integer> p = Stream.of(bufferedReader.readLine().replaceAll("\\s+$", "").split(" "))
-            .map(Integer::parseInt)
-            .collect(toList());
+		List<Integer> p = Stream.of(bufferedReader.readLine().replaceAll("\\s+$", "").split(" ")).map(Integer::parseInt)
+				.collect(toList());
 
-        List<Integer> result = SequenceEquationResult.permutationEquation(p);
-        System.out.println(result);
+		List<Integer> result = SequenceEquationResult.permutationEquation(p);
+		System.out.println(result);
 
 //        bufferedWriter.write(
 //            result.stream()
@@ -49,7 +64,7 @@ public class SequenceEquation {
 //            + "\n"
 //        );
 
-        bufferedReader.close();
+		bufferedReader.close();
 //        bufferedWriter.close();
-    }
+	}
 }
